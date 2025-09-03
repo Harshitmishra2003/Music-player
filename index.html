@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Music Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Menu -->
+    <div class="menu-container">
+      <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+      <div class="menu-dropdown">
+         <a href="about.html">About</a><br>
+         <a href="help.html">Help</a>
+      </div>
+    </div>
+
+  <!-- Auth Bar -->
+  <div class="auth-bar">
+    <div class="auth-buttons">
+      <span id="user-email" class="user-email" style="margin-right: 10px; display: none;"></span>
+      <a href="login.html" class="auth-button" id="login-btn">Login</a>
+      <a href="signup.html" class="auth-button" id="signup-btn">Signup</a>
+      <button id="logout" class="auth-button" style="display: none;">Logout</button>
+    </div>
+  </div>
+
+  <!-- Main Player -->
+  <div class="player">
+    <h2 id="title">No song loaded</h2>
+    <h4 id="artist">Upload to play</h4>
+    <audio id="audio" hidden></audio>
+
+    <div class="progress-section">
+     <div id="current-time" class="time-display">00:00</div>
+     <input type="range" id="progress" class="range" value="0" />
+     </div>
+
+
+    <div class="controls">
+      <button id="prev">⏮️</button>
+      <button id="play">▶️</button>
+      <button id="next">⏭️</button>
+    </div>
+
+    
+    <div class="volume-control">
+      <i class="fas fa-volume-up volume-icon"></i>
+     <input type="range" id="volume" class="range" min="0" max="1" step="0.01" value="1"/>
+    </div>
+    <!-- Upload Button -->
+    
+    <button id="upload-btn">Choose Songs</button>
+    <input type="file" id="upload-songs" accept="audio/*" multiple hidden/>
+  
+
+    <!-- Your Playlist Section -->
+    <div class="playlist-section">
+    <div class="dropdown-toggle" id="playlist-toggle">
+    <h3>Your Playlist</h3>
+    <i class="fas fa-chevron-down"></i>
+    </div>
+    <ul id="playlist" class="playlist collapsed"></ul>
+    </div>
+
+    <!--New button for exite  -->
+    <button id="back-to-playlists" style="display:none; margin:10px 0;">⬅️ Back to Playlists</button>
+
+
+    <!-- Create Playlist Section -->
+    <div class="create-playlist">
+    <div class="create-header">
+    <h3>Create Playlist</h3>
+    <button id="create-playlist-btn" class="add-playlist-btn"><i class="fas fa-plus"></i></button>
+    </div>
+    <input type="text" id="playlist-name" placeholder="Playlist name" style="display: none;" />
+    <button id="save-playlist" style="display: none;">Save Playlist</button>
+
+    </div>
+
+   </div>
+  <canvas id="circular-audio-visualizer" width="150" height="150"></canvas>
+
+
+  <!-- Firebase and Auth -->
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="auth.js"></script>
+
+  <!-- Main Script -->
+  <script type="module" src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.menu-toggle');
+    const dropdown = document.querySelector('.menu-dropdown');
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.menu-container').contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+  });
+  </script>
+
+</body>
+</html>
