@@ -1,7 +1,6 @@
 body {
   background: 
-    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-    url('icons/GettyImages-1297013252-c3de1c2d950f4aa7bbf3d66ba64057d9.jpg')
+    background: url('image.png') no-repeat center center fixed;
     no-repeat center center fixed;
   background-size: cover;
   display: flex;
@@ -455,4 +454,5 @@ body {
   padding: 5px 0;
   cursor: pointer;
 }
+
 
