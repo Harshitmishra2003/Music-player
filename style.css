@@ -1,5 +1,4 @@
-body {
-  background: 
+body { 
     background: url('./image.png') no-repeat center center fixed;
   background-size: cover;
   display: flex;
@@ -453,6 +452,7 @@ body {
   padding: 5px 0;
   cursor: pointer;
 }
+
 
 
 
